@@ -1,0 +1,36 @@
+<div class="match-simulation columns">
+    <div class="column column--short"></div>
+    <div class="column column--long">
+        <h2>Match Simulation</h2>
+        <p>Watch the virtual representation of your team's match and see the outcome.</p>
+        
+        <div class="match-simulation">
+            <div class="field">
+              <div class="goal left"></div>
+              <div class="goal right"></div>
+              <div class="midline"></div>
+              <div class="penalty-area left"></div>
+              <div class="penalty-area right"></div>
+              <div class="goal-area left"></div>
+              <div class="goal-area right"></div>
+              <div class="center-circle"></div>
+              <div class="penalty-spot left"></div>
+              <div class="penalty-spot right"></div>
+              <div class="player" *ngFor="let player of players" [style.left.px]="player.x" [style.top.px]="player.y"></div>
+              <div class="ball" [style.left.px]="ballPosition.x" [style.top.px]="ballPosition.y"></div>
+              <div *ngIf="showGoalMessage" class="goal-message">
+                Goal!!
+              </div>
+              <div *ngFor="let player of players" 
+     [style.left.px]="player.x" 
+     [style.top.px]="player.y"
+     [ngClass]="{'red-player': player.team === 'red', 'blue-player': player.team === 'blue'}"
+     class="player">
+</div>
+
+<div [style.left.px]="ballPosition.x" [style.top.px]="ballPosition.y" class="ball"></div>
+
+            </div>
+          </div>
+    <div class="column column--short"></div>
+</div>

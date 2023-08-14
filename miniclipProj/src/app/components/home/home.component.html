@@ -1,0 +1,50 @@
+<!-- body.component.html -->
+
+<div class="columns">
+    <div class="column column--short"></div>
+    <div class="column column--long">
+        
+        <section class="intro column column--short">
+            <h2>Welcome to the World of Football!</h2>
+            <p>Join the ultimate online football gaming experience.</p>
+            <a (click)="navigateToSimulation()" class="play-button">Quick Match <span class="arrow">→</span></a>
+        </section>
+        
+        <main class="columns">
+            <section class="about-game column column--short">
+                <h2>About the Game</h2>
+                <p>
+                    Dive into the world of soccer management! 
+                    <span class="highlight">In this online game, players take on the role of a team manager,</span> 
+                    making pivotal decisions from player signings to in-match tactics. Navigate the challenges of budgeting, 
+                    strategizing for matches, and leading your team to victory in leagues and tournaments. 
+                    <span class="call-to-action">Every decision influences your team's success. 
+                    Do you have what it takes to be a top manager? Join and prove your strategic prowess on the virtual pitch!</span>
+                </p>
+            </section>
+        
+            <section class="how-to-play column column--short">
+                <h2>How to Play</h2>
+                <ol>
+                    <li><strong>Sign Up & Team Selection:</strong> Register and choose your soccer team.</li>
+                    <li><strong>Manage Players:</strong> Scout, sign, and organize lineups.</li>
+                    <li><strong>Tactics & Strategy:</strong> Set formations and adjust in-game decisions.</li>
+                    <li><strong>Gameplay:</strong> Watch match simulations and adapt in real-time.</li>
+                    <li><strong>Budget Management:</strong> Allocate funds and invest in team upgrades.</li>
+                    <li><strong>Competition:</strong> Participate in league matches and tournaments, aiming for victory.</li>
+                </ol>
+            </section>
+        </main>
+        <section class="leaderboard column column--short">
+            <h2>Leaderboard</h2>
+            <!-- Supposed to store winning team names -->
+            <ol class="top-players">
+                <li class="player-1">Player 1</li>
+                <li class="player-2">Player 2</li>
+                <li class="player-3">Player 3</li>
+            </ol>
+        </section>
+    </div>
+    <div class="column column--short column__img--1"></div>
+</div>
+

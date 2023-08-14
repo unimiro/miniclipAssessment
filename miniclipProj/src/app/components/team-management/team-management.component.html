@@ -1,0 +1,123 @@
+<div class="team-management columns">
+    <div class="column column--short"></div>
+        <div class="column column--long">
+            <div class="header">
+                <h2>Team Management</h2>
+                <p>Welcome to the central hub for managing your teams. Organize, strategize, and track player statistics all in one place.</p>
+                <div class="main">
+                    <div class="player-card capitan">
+                        <div class="player-image">
+                            <img src="assets\images\players\1.jpg" alt="Capitan">
+                        </div>
+                        <div class="player-info">
+                            <h3 class="player-name">Capitan</h3>
+                            <ul class="player-stats">
+                                <li><strong>Attack Power:</strong> <span>90</span></li>
+                                <li><strong>Support:</strong> <span>75</span></li>
+                                <li><strong>Defence:</strong> <span>85</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- Strategy selection where based on chosen strategy team get +5% on points for attack/support/defence depending on strategy chosen-->
+                    <div class="column column--short strategy-selection">
+                        <h2>Choose Strategy</h2>
+                        <p>Choose your team's playing strategy for the upcoming matches.</p>
+                        <div class="strategy-dropdown">
+                            <select [(ngModel)]="selectedStrategy" (change)="onStrategyChange()"> 
+                                <option value="aggressive">Aggressive Attack</option>
+                                <option value="balanced">Balanced</option>
+                                <option value="defence">Strong Defence</option>
+                            </select>
+                        </div>
+                        <div style="margin-top: 20px;">
+                            {{ strategyDescriptions[selectedStrategy] }}
+                        </div>
+                    </div>
+                    
+                    <!-- Team statistics is average of the whole team added-->
+                    <div class="column column--short team-statistics">
+                        <h2>Team Statistics</h2>
+                        <p>Review your team's performance metrics.</p>
+                        <div class="statistics">
+                            <div class="stat-item">
+                                <strong>Average Score:</strong> {{ teamAverageScore }}
+                            </div>
+                            <div class="stat-item">
+                                <strong>Attack Power:</strong> {{ teamAttackPower }}
+                            </div>
+                            <div class="stat-item">
+                                <strong>Support:</strong> {{ teamSupport }}
+                            </div>
+                            <div class="stat-item">
+                                <strong>Defence:</strong> {{ teamDefence }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="player-selection">
+                <h2>Select Players</h2>
+                <p>Select 10 players for your team</p>
+                <div class="player-card-wrapper">
+                    <div *ngFor="let player of selectedPlayers; let i = index" class="player-card" (click)="openModal(i)">
+                        <div class="player-image">
+                            <img [src]="player.imagePath" alt="player.Name">
+                        </div>
+                        <div class="player-info">
+                            <h3 class="player-name">{{player.name}}</h3>
+                            <ul class="player-stats">
+                                <li><strong>Attack Power:</strong> <span>{{player.attack}}</span></li>
+                                <li><strong>Support:</strong> <span>{{player.support}}</span></li>
+                                <li><strong>Defence:</strong> <span>{{player.defence}}</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div *ngIf="selectedPlayers.length < 10" class="player-card add-player-card" (click)="openModal()">
+                        <p class="plus-symbol">+</p>
+                    </div>
+                </div>
+            
+                <!-- Modal popup for selecting players -->
+                <div *ngIf="isModalOpen" class="player-modal">
+                    <div class="player-modal-content">
+                      <table>
+                        <thead>
+                          <tr>
+                            <th>Player</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <ng-container *ngFor="let player of players">
+                            <tr *ngIf="!isSelected(player)">
+                                <td>
+                                    <div class="player-card-modal">
+                                      <div class="player-image">
+                                        <img [src]="player.imagePath" alt="{{player.name}}">
+                                      </div>
+                                      <div class="player-info">
+                                        <h3 class="player-name">{{player.name}}</h3>
+                                        <ul class="player-stats">
+                                          <li><strong>Attack Power:</strong> <span>{{player.attack}}</span></li>
+                                          <li><strong>Support:</strong> <span>{{player.support}}</span></li>
+                                          <li><strong>Defence:</strong> <span>{{player.defence}}</span></li>
+                                        </ul>
+                                      </div>
+                                    </div>
+                                  </td>
+                                  
+                              <td><button (click)="selectPlayer(player)">Select</button></td>
+                            </tr>
+                          </ng-container>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                  <div class="simulation-button">
+                    <button (click)="startSimulation()">Start Simulation</button>
+                </div>
+                
+            </div>
+        </div>
+    <div class="column column--short"></div>
+</div>

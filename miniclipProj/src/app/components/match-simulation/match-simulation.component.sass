@@ -1,0 +1,140 @@
+$soft-blue: rgba(173, 216, 230, 0.2)
+$dark-blue-border: rgba(100, 149, 237, 0.5)
+$grass-green: #4CAF50
+
+.columns
+  position: relative
+  display: flex
+  flex-direction: column-reverse
+  align-items: center
+  @media (min-width: 768px)
+    flex-direction: row
+    justify-content: space-between
+    flex-wrap: wrap
+
+.column
+  flex: 1 0 auto
+  font-size: 16px
+  text-align: center
+  &--short
+    flex-basis: 100%
+    background-repeat: no-repeat
+    @media (min-width: 768px)
+      flex-basis: 11%
+  &--long
+    flex-basis: 100%
+    @media (min-width: 768px)
+      flex-basis: 66%
+      border-radius: 2px
+
+.match-simulation
+  display: block ruby
+  text-align: center
+  padding: 2.5rem
+  border: 2px solid $dark-blue-border
+  border-radius: 15px
+  margin: 2rem 2rem 3.12rem 2rem
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1)
+  position: relative
+  .field
+    position: relative
+    width: 600px
+    height: 400px
+    margin: 0 auto
+    background-color: lighten($grass-green, 5%)
+    border: 5px solid darken($grass-green, 10%)
+    border-radius: 20px
+    .midline
+      position: absolute
+      width: 5px
+      height: 100%
+      background-color: #fff
+      left: 50%
+      top: 0
+      transform: translateX(-50%)
+    .penalty-area
+      position: absolute
+      width: 180px
+      height: 320px
+      border: 5px solid #fff
+      top: 50%
+      transform: translateY(-50%)
+      &.left
+        left: 0
+      &.right
+        right: 0
+    .goal-area
+      position: absolute
+      width: 60px
+      height: 120px
+      border: 5px solid #fff
+      top: 50%
+      transform: translateY(-50%)
+      &.left
+        left: 0
+      &.right
+        right: 0
+    .center-circle
+      position: absolute
+      width: 120px
+      height: 120px
+      border: 5px solid #fff
+      border-radius: 50%
+      top: 50%
+      left: 50%
+      transform: translate(-50%, -50%)
+    .penalty-spot
+      position: absolute
+      width: 10px
+      height: 10px
+      background-color: #fff
+      border-radius: 50%
+      top: 50%
+      transform: translateY(-50%)
+      &.left
+        left: 90px
+      &.right
+        right: 90px
+
+  .goal
+    position: absolute
+    width: 5px
+    height: 100px
+    background-color: #fff
+    top: 50%
+    transform: translateY(-50%)
+    &.left
+      left: 0
+    &.right
+      right: 0
+
+.player
+  position: absolute
+  width: 20px
+  height: 20px
+  border-radius: 50%
+  &.red-player 
+    background-color: red
+  &.blue-player 
+    background-color: blue
+
+.ball 
+  position: absolute
+  width: 15px
+  height: 15px
+  background-color: black
+  border-radius: 50%
+
+.goal-message
+  position: absolute
+  top: 50%
+  left: 50%
+  transform: translate(-50%, -50%)
+  font-size: 2em
+  font-weight: bold
+  color: red
+
+.player
+  &.goalkeeper 
+    background-color: yellow
+    border: 1px solid black
